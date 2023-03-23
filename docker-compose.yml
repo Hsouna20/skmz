@@ -9,8 +9,8 @@ services:
       - db
     environment:
       profile: prod
-  db:
-    images: mongo:4.2.2
+   db:
+    image: mongo:4.2.2
     container_name: db
     environment:
       MONGO_INITDB_DATABASE: programmers
