@@ -9,7 +9,7 @@ services:
       - db
     environment:
       profile: prod
-   db:
+  db:
     image: mongo:4.2.2
     container_name: db
     environment:
