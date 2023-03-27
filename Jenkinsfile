@@ -5,9 +5,9 @@ pipeline {
             steps {
                 script {
                     echo " building docker image..."
-                    withCredentials([usernamePassword(credentialsID: ' docker-hub-creds' , passwordVariable:'PASS' , usernameVariable: 'USER')]){
+                     withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh ' docker build -t hsouna2/skmz-first-try:1.0 .'
-                        
+                        }
                     }
                 }
             }
@@ -20,4 +20,4 @@ pipeline {
             }
         }
     }
-}
+
