@@ -20,7 +20,7 @@ pipeline {
                     sh' docker --version'
                     sh' docker-compose --version'
                     sh' npm --version'
-                    sh' go version'
+                    sh' go --version'
                 }
             }
         }
