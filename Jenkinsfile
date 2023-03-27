@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    tools {
-        go 'GO1.20.2'
-    }
+   
     stages {
         stage("build") {
             steps {
@@ -23,7 +21,7 @@ pipeline {
                     sh' docker --version'
                     sh' docker-compose --version'
                     sh' npm --version'
-                    sh' go version'
+                 
                     sh 'docker-compose up '
                 }
             }
