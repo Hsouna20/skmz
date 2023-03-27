@@ -23,6 +23,7 @@ pipeline {
                     sh' npm --version'
                  
                     sh 'docker-compose up '
+                    echo "docker compose up success"
                 }
             }
         }
