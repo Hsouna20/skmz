@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        go 'GO1.20.2'
+    }
     stages {
         stage("build") {
             steps {
