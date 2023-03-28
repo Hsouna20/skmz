@@ -22,10 +22,29 @@ pipeline {
                     sh' docker-compose --version'
                     sh' npm --version'
                  
-                    sh ' docker-compose up'
+                   
                     echo "docker compose up success"
                 }
             }
         }
+        
+        stage('Test') {
+            steps {
+                sh '''
+                      # Assuming you have Go installed on your Jenkins node
+
+                       # Install the necessary dependencies
+                        go get -u github.com/stretchr/testify/assert
+
+                        # Run the tests
+                         go test -v ./...
+
+                        # Exit with status code 1 if any test fails
+                        if [ $? -ne 0 ]; then
+                          exit 1
+                         fi
+                        '''
+  }
+}
     }
 }
