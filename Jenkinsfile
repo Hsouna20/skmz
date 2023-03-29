@@ -30,7 +30,7 @@ pipeline {
         
         stage('Test') {
             steps {
-               sh ' go mod init github.com/Hsouna20/skmz/blob/main/server'
+              // sh ' go mod init github.com/Hsouna20/skmz/blob/main/server'
                 sh '''
                       # Assuming you have Go installed on your Jenkins node
 
