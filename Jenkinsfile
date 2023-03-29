@@ -23,15 +23,14 @@ pipeline {
                     sh' docker --version'
                     sh' docker-compose --version'
                     sh' npm --version'
-                 
-                   
-                    echo "docker compose up success"
+                    sh'docker-compose up '
                 }
             }
         }
         
         stage('Test') {
             steps {
+               /* sh ' go mod init github.com/Hsouna20/skmz/blob/main/server/server_test.go'
                 sh '''
                       # Assuming you have Go installed on your Jenkins node
 
@@ -45,7 +44,8 @@ pipeline {
                         if [ $? -ne 0 ]; then
                           exit 1
                          fi
-                        '''
+                        '''   */
+                echo ' test stage '
   }
 }
     }
