@@ -39,7 +39,7 @@ pipeline {
 
                         # Run the tests
                         go get github.com/Hsouna20/skmz/server
-                         go test -v github.com/Hsouna20/skmz/tree/main/server
+                         go test -v github.com/Hsouna20/skmz/server
 
                         # Exit with status code 1 if any test fails
                         if [ $? -ne 0 ]; then
