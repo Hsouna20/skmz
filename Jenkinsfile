@@ -30,7 +30,7 @@ pipeline {
         
         stage('Test') {
             steps {
-               /* sh ' go mod init github.com/Hsouna20/skmz/blob/main/server/server_test.go'
+               sh ' go mod init github.com/Hsouna20/skmz/blob/main/server/server_test.go'
                 sh '''
                       # Assuming you have Go installed on your Jenkins node
 
@@ -44,7 +44,7 @@ pipeline {
                         if [ $? -ne 0 ]; then
                           exit 1
                          fi
-                        '''   */
+                        '''   
                 echo ' test stage '
   }
 }
