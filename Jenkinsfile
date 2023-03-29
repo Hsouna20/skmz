@@ -23,7 +23,7 @@ pipeline {
                     sh' docker --version'
                     sh' docker-compose --version'
                     sh' npm --version'
-                    sh'docker compose up -d '
+                   // sh'docker compose up -d '
                 }
             }
         }
