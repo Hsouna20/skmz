@@ -38,7 +38,7 @@ pipeline {
                         go get -u github.com/stretchr/testify/assert
 
                         # Run the tests
-                        go get github.com/Hsouna20/skmz/tree/main/server
+                        go get github.com/Hsouna20/skmz/server
                          go test -v github.com/Hsouna20/skmz/tree/main/server
 
                         # Exit with status code 1 if any test fails
