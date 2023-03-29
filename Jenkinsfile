@@ -33,7 +33,7 @@ pipeline {
          stage('Setup') {
             steps {
                 sh 'export GO111MODULE=on'
-                sh 'rm go.mod go.sum'
+               
                 sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
               sh 'go mod tidy'
                 sh 'go get -u github.com/stretchr/testify/assert'
