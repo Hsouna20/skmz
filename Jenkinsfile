@@ -28,26 +28,17 @@ pipeline {
             }
         }
         
-        stage('Test') {
+      
+       
+          stage('Setup') {
             steps {
-              // sh ' go mod init github.com/Hsouna20/skmz/blob/main/server'
-                sh '''
-                      # Assuming you have Go installed on your Jenkins node
+                sh 'export GO111MODULE=on'
+                sh 'go mod init github.com/Hsouna20/skmz/server'
+                sh 'go get -u github.com/stretchr/testify/assert'
+                sh 'go test -v ./...'
+            }
+        }
+    
 
-                       # Install the necessary dependencies
-                        go get -u github.com/stretchr/testify/assert
-
-                        # Run the tests
-                        go get github.com/Hsouna20/skmz/server
-                         go test -v github.com/Hsouna20/skmz/server
-
-                        # Exit with status code 1 if any test fails
-                        if [ $? -ne 0 ]; then
-                          exit 1
-                         fi
-                        '''   
-                echo ' test stage '
-  }
-}
     }
 }
