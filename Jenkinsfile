@@ -35,7 +35,7 @@ pipeline {
                  sh 'export GO111MODULE=on'
                 sh 'go mod init github.com/Hsouna20/skmz/server'
                 sh 'go get -u github.com/stretchr/testify/assert'
-                sh 'go get github.com/Hsouna20/skmz/server'
+                sh 'go get github.com/Hsouna20/skmz'
                 sh 'go test -v github.com/Hsouna20/skmz/server'
             }
         }
