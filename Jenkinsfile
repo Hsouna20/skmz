@@ -38,7 +38,7 @@ pipeline {
               sh 'go mod tidy'
                 sh 'go get -u github.com/stretchr/testify/assert'
                 sh 'go get github.com/Hsouna20/skmz '
-                sh ' go get github.com/Hsouna20/skmz/tree/main/server '
+                sh ' go get github.com/Hsouna20/skmz/server '
                  sh 'go test -v github.com/Hsouna20/skmz/tree/main/server'
     }
 }
