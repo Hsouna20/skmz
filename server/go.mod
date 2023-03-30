@@ -1,4 +1,4 @@
-module github.com/shpota/skmz
+module github.com/Hsouna20/skmz
 
 go 1.13
 
