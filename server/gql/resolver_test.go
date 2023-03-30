@@ -3,7 +3,7 @@ package gql
 import (
 	"context"
 	"errors"
-	"github.com/Hsouna20/skmz/tree/main/server/model"
+	"github.com/shpota/skmz/model"
 	"go.mongodb.org/mongo-driver/mongo"
 	"testing"
 )
