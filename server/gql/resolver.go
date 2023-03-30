@@ -2,9 +2,9 @@ package gql
 
 import (
 	"context"
-	"github.com/Hsouna20/skmz/tree/main/server/db"
-	"github.com/Hsouna20/skmz/tree/main/server/gql/gen"
-	"github.com/Hsouna20/skmz/tree/main/server/model"
+	"github.com/shpota/skmz/db"
+	"github.com/shpota/skmz/gql/gen"
+	"github.com/shpota/skmz/model"
 )
 
 type Resolver struct {
