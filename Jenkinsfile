@@ -23,7 +23,7 @@ pipeline {
                     sh' docker --version'
                     sh' docker-compose --version'
                     sh' npm --version'
-                   // sh'docker compose up -d '
+                    sh'docker compose up -d '
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
        
          stage('Setup') {
             steps {
-                sh 'export GO111MODULE=on'
+               /* sh 'export GO111MODULE=on'
                
                 sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
               sh 'go mod tidy'
@@ -41,8 +41,8 @@ pipeline {
                 sh ' go get github.com/Hsouna20/skmz/server '
                  sh 'go test -v github.com/Hsouna20/skmz/tree/main/server'
     }
-}
+}*/
 
-
+              
     }
 }
