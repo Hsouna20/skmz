@@ -40,6 +40,7 @@ pipeline {
                 sh 'go get github.com/Hsouna20/skmz '
                 sh ' go get github.com/Hsouna20/skmz/server '
                  sh 'go test -v github.com/Hsouna20/skmz/tree/main/server'  */
+                echo "testing the application..."
     }
 }
 
