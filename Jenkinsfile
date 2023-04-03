@@ -28,22 +28,36 @@ pipeline {
             }
         }
         
-      
+          stages {
+        stage("unit-test") {
+            steps {
+                sh 'export GO111MODULE=on'
+                echo 'UNIT TEST EXECUTION STARTED'
+                sh 'make unit-tests'
+            }
+        }
+        stage("functional-test") {
+            steps {
+                sh 'export GO111MODULE=on'
+                echo 'FUNCTIONAL TEST EXECUTION STARTED'
+                sh 'make functional-tests'
+            }
+        }
        
-         stage('Setup') {
+         /*stage('Setup') {
             steps {
                sh 'export GO111MODULE=on'
                
-                /*sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
+                sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
               sh 'go mod tidy'
                 sh 'go get -u github.com/stretchr/testify/assert'
                 sh 'go get github.com/Hsouna20/skmz '
-                sh ' go get github.com/Hsouna20/skmz/server '*/
+                sh ' go get github.com/Hsouna20/skmz/server '
                  sh 'go test 
                 echo "testing the application..."
     }
 }
-
+*/
               
     }
 }
