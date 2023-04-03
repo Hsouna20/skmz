@@ -28,7 +28,7 @@ pipeline {
             }
         }
         
-          stages {
+          
         stage("unit-test") {
             steps {
                 sh 'export GO111MODULE=on'
@@ -60,5 +60,4 @@ pipeline {
 */
               
     }
-}
 }
