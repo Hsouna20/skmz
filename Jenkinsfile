@@ -31,7 +31,7 @@ pipeline {
           
         stage("unit-test") {
             steps {
-                sh 'go mod init '
+                sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
                 sh 'export GO111MODULE=on'
                 echo 'UNIT TEST EXECUTION STARTED'
                 sh 'make unit-tests'
@@ -39,7 +39,7 @@ pipeline {
         }
         stage("functional-test") {
             steps {
-                sh 'go mod init '
+                sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
                 sh 'export GO111MODULE=on'
                 echo 'FUNCTIONAL TEST EXECUTION STARTED'
                 sh 'make functional-tests'
