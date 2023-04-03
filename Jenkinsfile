@@ -39,7 +39,7 @@ pipeline {
                 sh 'go get -u github.com/stretchr/testify/assert'
                 sh 'go get github.com/Hsouna20/skmz '
                 sh ' go get github.com/Hsouna20/skmz/server '*/
-                 sh 'go test -v
+                 sh 'go test 
                 echo "testing the application..."
     }
 }
