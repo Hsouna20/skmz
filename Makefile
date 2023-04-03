@@ -1,6 +1,7 @@
 run:
-   go run main.go
+    go run main.go
 unit-tests:
-   go test ./...
+    go test ./...
 functional-tests:
-   go test ./functional_tests/transformer_test.go
+    go test ./functional_tests/transformer_test.go
+
