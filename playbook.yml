@@ -15,12 +15,12 @@
 
     - name: Clone API server repository
       git:
-        repo: https://github.com/Hsouna20/skmz/tree/main/server
+        repo: https://github.com/Hsouna20/skmz
         dest: /opt/my-api
         version: main
 
     - name: Build API server
-      command: go build
+      command: go build -o my-api
       args:
         chdir: /opt/my-api
 
@@ -35,26 +35,5 @@
 
     - name: Clone frontend repository
       git:
-        repo: https://github.com/Hsouna20/skmz/tree/main/webapp
-        dest: /var/www/html
-        version: main
-
-    - name: Install frontend dependencies
-      npm:
-        path: /var/www/html
-        state: present
-
-    - name: Configure Nginx
-      template:
-        src: nginx.conf.j2
-        dest: /etc/nginx/nginx.conf
-      notify:
-        - Reload Nginx
-
-  handlers:
-    - name: Reload Nginx
-      service: name=nginx state=restarted
-
-    - name: Stop API server
-      command: kill {{ api_server_pid.pid }}
-      when: api_server_pid is defined and api_server_pid.returncode is not defined
+        repo: https://github.com/Hsouna20/skmz
+       
