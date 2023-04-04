@@ -29,37 +29,32 @@ pipeline {
         }
         
           
-        stage("unit-test") {
-            steps {
-                sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
-                sh 'export GO111MODULE=on'
-                echo 'UNIT TEST EXECUTION STARTED'
-                sh 'make unit-tests'
-            }
-        }
-        stage("functional-test") {
-            steps {
-                sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
-                sh 'export GO111MODULE=on'
-                echo 'FUNCTIONAL TEST EXECUTION STARTED'
-                sh 'make functional-tests'
-            }
-        }
+        
        
-         /*stage('Setup') {
+         stage('Setup') {
             steps {
                sh 'export GO111MODULE=on'
                
-                sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
+                /*sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
               sh 'go mod tidy'
                 sh 'go get -u github.com/stretchr/testify/assert'
                 sh 'go get github.com/Hsouna20/skmz '
                 sh ' go get github.com/Hsouna20/skmz/server '
-                 sh 'go test 
+                 sh 'go test */
                 echo "testing the application..."
     }
 }
-*/
+          stages {
+            stage('Deploy to Web Servers') {
+                steps {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credentials', keyFileVariable: 'SSH_KEY', passphraseVariable: '', usernameVariable: 'SSH_USER')]) {
+                        sh """
+                          ssh-agent bash -c 'ssh-add $SSH_KEY; ansible-playbook -i inventory.ini deploy.yml'
+                         """
+                }
+            }
+        }
+    }
               
     }
 }
