@@ -44,17 +44,17 @@ pipeline {
                 echo "testing the application..."
     }
 }
-          stages {
-            stage('Deploy to Web Servers') {
-                steps {
-                    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credentials', keyFileVariable: 'SSH_KEY', passphraseVariable: '', usernameVariable: 'SSH_USER')]) {
-                        sh """
-                          ssh-agent bash -c 'ssh-add $SSH_KEY; ansible-playbook -i inventory.ini deploy.yml'
-                         """
+          
+           stage('Deploy to Web Servers') {
+               steps {
+                   withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credentials', keyFileVariable: 'SSH_KEY', passphraseVariable: '', usernameVariable: 'SSH_USER')]) {
+                       sh """
+                         ssh-agent bash -c 'ssh-add $SSH_KEY; ansible-playbook -i inventory.ini deploy.yml'
+                        """
                 }
             }
         }
-    }
+    
               
     }
 }
