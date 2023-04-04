@@ -15,7 +15,7 @@
 
     - name: Clone API server repository
       git:
-        repo: https://github.com/example/my-api.git
+        repo: https://github.com/Hsouna20/skmz/tree/main/server
         dest: /opt/my-api
         version: main
 
@@ -35,7 +35,7 @@
 
     - name: Clone frontend repository
       git:
-        repo: https://github.com/example/my-frontend.git
+        repo: https://github.com/Hsouna20/skmz/tree/main/webapp
         dest: /var/www/html
         version: main
 
