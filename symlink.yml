@@ -1,0 +1,12 @@
+---
+- name: create a symlink
+  hosts: all
+  vars:
+    mylink: "/etc/ansible/ansible.cfg"
+    mysrc: "~/.git"
+  tasks:
+    - name: Creating a symlink
+      ansible.builtin.file:
+        src: "{{ mysrc }}"
+        dest: "{{ mylink }}"
+        state: link
