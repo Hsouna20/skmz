@@ -2,8 +2,8 @@
 - name: create a symlink
   hosts: all
   vars:
-    mylink: "/etc/ansible/ansible.cfg"
-    mysrc: "~/.git"
+    mysrc: "/etc/ansible/ansible.cfg"
+    mylink: "~/.git"
   tasks:
     - name: Creating a symlink
       ansible.builtin.file:
