@@ -2,15 +2,16 @@
 - name: Configure API server and frontend
   hosts: webserver
   become: true
-    
+  become_method: sudo
+  become_pass: Has+Sah2025@#
+
   tasks:
     - name: Configure passwordless sudo access for remote user
       lineinfile:
         dest: /etc/sudoers
         regexp: '^%sudo'
         line: 'hsounaa ALL=(ALL) NOPASSWD:ALL'
-
-
+    
     - name: Install required packages
       apt:
         name:
