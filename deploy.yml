@@ -10,6 +10,7 @@
         regexp: '^%sudo'
         line: 'hsounaa ALL=(ALL) NOPASSWD:ALL'
 
+
     - name: Install required packages
       apt:
         name:
