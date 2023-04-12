@@ -26,9 +26,16 @@
         version: main
 
     - name: Build API server
-      command: go build
+      become: true
+      become_user: "{{ remote_user }}"
+      shell: |
+        cd /opt/my-api/server
+        go build -o api-server main.go
       args:
-        chdir: /opt/my-api
+        executable: /bin/bash
+      register: build_result
+      failed_when: build_result.rc != 0
+
 
     - name: Start API server
       command: ./my-api
