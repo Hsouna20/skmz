@@ -8,7 +8,7 @@
       lineinfile:
         dest: /etc/sudoers
         regexp: '^%sudo'
-        line: '%sudo ALL=(ALL) NOPASSWD:ALL'
+        line: 'hsounaa ALL=(ALL) NOPASSWD:ALL'
 
     - name: Install required packages
       apt:
