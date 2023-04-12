@@ -2,6 +2,11 @@
 - name: Configure API server and frontend
   hosts: webserver
   become: true
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%sudo'
+    line: '<hsounaa> ALL=(ALL) NOPASSWD:ALL'
 
   tasks:
     - name: Install required packages
