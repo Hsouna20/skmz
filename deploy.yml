@@ -1,16 +1,15 @@
 ---
 - name: Configure API server and frontend
   hosts: webserver
-  - name: Configure passwordless sudo access for remote user
-    become: true
-    lineinfile:
-      dest: /etc/sudoers
-      state: present
-      regexp: '^%sudo'
-      line: 'hsounaa ALL=(ALL) NOPASSWD:ALL'
-
-
+  become: true
+    
   tasks:
+    - name: Configure passwordless sudo access for remote user
+      lineinfile:
+        dest: /etc/sudoers
+        regexp: '^%sudo'
+        line: '%sudo ALL=(ALL) NOPASSWD:ALL'
+
     - name: Install required packages
       apt:
         name:
