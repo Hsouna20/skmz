@@ -49,7 +49,7 @@ pipeline {
                steps {
                    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credentials', keyFileVariable: 'SSH_KEY', passphraseVariable: '', usernameVariable: 'SSH_USER')]) {
                        sh """
-                         ssh-agent bash -c 'ssh-add $SSH_KEY; ansible-playbook -i inventory.ini deploy.yml'
+                         ssh-agent bash -c 'ssh-add $SSH_KEY; ansible-playbook -i inventory.ini deploy.yml --ask-become-pass '
                         """
                 }
             }
