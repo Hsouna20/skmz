@@ -37,7 +37,9 @@
     - name: Pull Docker image
       docker_image:
         name: hsouna2/skmz-first-try:1.0
-        pull: yes
+        build:
+          pull: yes
+
 
     # Start application with Docker Compose
     - name: Start application with Docker Compose
