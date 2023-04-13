@@ -1,40 +1,35 @@
 ---
-- name: Deploy HSOUNA2 app using Docker Compose
+- name: Deploy SKMZ app
   hosts: webserver
-  become: true
-  vars:
-    docker_registry: "hsouna2/skmz-first-try"
-    app_name: "skmz-first-try"
-    app_version: "1.0"
-  tasks:
-    
-    - name: Install Docker
-      apt:
-        name: docker.io
-        state: present
-    - name: Log in to Docker Hub
-      docker_login:
-        username: "hsouna2"
-        password: "Has+Sah2025@#"
-      become: true
-      become_user: root
-      vars:
-         ansible_python_interpreter: /usr/bin/python3
-    - name: Download Dockerfile from GitHub
-      get_url:
-        url: "https://raw.githubusercontent.com/Hsouna20/skmz/main/Dockerfile"
-        dest: "/home/hsounaa/Dockerfile"
+  become: yes
 
-    - name: Download Docker Compose file from GitHub
-      get_url:
-        url: " https://raw.githubusercontent.com/Hsouna20/skmz/main/docker-compose.yml"
-        dest: "/home/hsounaa/docker-compose.yml"
-    - name: Pull Docker image from Docker Hub
-      docker_image:
-        name: "{{ docker_registry }}:{{ app_version }}"
-        source: pull
-    - name: Deploy the app using Docker Compose
-      become: true
-      command: " docker-compose up -d"
-      args:
-        chdir: "/home/hsounaa/"
+  tasks:
+    # Clone the GitHub repository
+    - name: Clone GitHub repository
+      git:
+        repo: https://github.com/Hsouna20/skmz.git
+        dest: /home/hsounaa/skmz
+        clone: yes
+        force: yes
+
+    # Install Docker and Docker Compose
+    - name: Install Docker and Docker Compose
+      apt:
+        name:
+          - docker.io
+          - docker-compose
+        state: present
+    
+    
+    # Build and start the app with docker-compose
+    - name: Build and start app with docker-compose
+      docker_compose:
+        project_name: skmz
+        pull: yes
+        build: yes
+        build_args:
+          - NODE_ENV=production
+        state: started
+        recreate: yes
+        files:
+          - /home/hsouna/skmz/docker-compose.yml
