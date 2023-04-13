@@ -32,15 +32,17 @@
       become_user: root
       vars:
          ansible_python_interpreter: /usr/bin/python3
-    # Build and start the app with docker-compose
+
+    # Pull Docker image
     - name: Pull Docker image
       docker_image:
         name: hsouna2/skmz-first-try:1.0
         pull: yes
 
+    # Start application with Docker Compose
     - name: Start application with Docker Compose
       docker_compose:
-        project_src: /home/hsouna/skmz
+        project_src: ./skmz
         project_name: skmz
         files:
           - /home/hsouna/skmz/docker-compose.yml
