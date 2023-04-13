@@ -32,4 +32,4 @@
     - name: Deploy the app using Docker Compose
       command: "docker-compose up -d"
       args:
-        chdir: "{{ playbook_dir }}"
+        chdir: "/home/hsounaa/"
