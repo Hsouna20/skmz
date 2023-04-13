@@ -20,6 +20,10 @@
       become_user: root
       vars:
          ansible_python_interpreter: /usr/bin/python3
+    - name: Download Dockerfile from GitHub
+      get_url:
+        url: "https://raw.githubusercontent.com/Hsouna20/skmz/main/Dockerfile"
+        dest: "/home/hsounaa/Dockerfile"
 
     - name: Download Docker Compose file from GitHub
       get_url:
