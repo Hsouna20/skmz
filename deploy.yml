@@ -13,7 +13,7 @@
         name: docker.io
         state: present
     - name: Install Docker Compose
-      command: "curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ ansible_system }}-{{ ansible_machine }} -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose"
+      command: " curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/bin/docker-compose && sudo chmod +x /usr/bin/docker-compose"
     - name: Log in to Docker Hub
       docker_login:
         username: "hsouna2"
