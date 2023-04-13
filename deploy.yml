@@ -7,18 +7,18 @@
     app_name: "skmz-first-try"
     app_version: "1.0"
   tasks:
-    - name: Log in to Docker Hub
-      docker_login:
-        username: "hsouna2"
-        password: "Has+Sah2025@#"
-
+    
     - name: Install Docker
       apt:
         name: docker.io
         state: present
     - name: Install Docker Compose
       command: "curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ ansible_system }}-{{ ansible_machine }} -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose"
-    
+    - name: Log in to Docker Hub
+      docker_login:
+        username: "hsouna2"
+        password: "Has+Sah2025@#"
+
     - name: Download Docker Compose file from GitHub
       get_url:
         url: "https://raw.githubusercontent.com/hsouna/skmz/docker-compose.yml"
