@@ -46,9 +46,9 @@
     # Start application with Docker Compose
     - name: Start application with Docker Compose
       docker_compose:
-        project_src: ./skmz
+        project_src: /home/hsounaa/skmz
         project_name: skmz
         files:
-          - /home/hsouna/skmz/docker-compose.yml
+          - /home/hsounaa/skmz/docker-compose.yml
         state: present
         recreate: always
