@@ -30,6 +30,7 @@
         name: "{{ docker_registry }}:{{ app_version }}"
         source: pull
     - name: Deploy the app using Docker Compose
+      become: true
       command: "docker-compose up -d"
       args:
         chdir: "/home/hsounaa/"
