@@ -2,6 +2,10 @@
 - name: Deploy SKMZ app
   hosts: webserver
   become: yes
+  vars:
+    docker_registry: "hsouna2/skmz-first-try"
+    app_name: "skmz-first-try"
+    app_version: "1.0"
 
   tasks:
     # Clone the GitHub repository
@@ -20,16 +24,25 @@
           - docker-compose
         state: present
     
-    
+    - name: Log in to Docker Hub
+      docker_login:
+        username: "hsouna2"
+        password: "Has+Sah2025@#"
+      become: true
+      become_user: root
+      vars:
+         ansible_python_interpreter: /usr/bin/python3
     # Build and start the app with docker-compose
-    - name: Build and start app with docker-compose
-      docker_compose:
-        project_name: skmz
+    - name: Pull Docker image
+      docker_image:
+        name: hsouna2/skmz-first-try:1.0
         pull: yes
-        build: yes
-        build_args:
-          - NODE_ENV=production
-        state: started
-        recreate: yes
+
+    - name: Start application with Docker Compose
+      docker_compose:
+        project_src: /home/hsouna/skmz
+        project_name: skmz
         files:
           - /home/hsouna/skmz/docker-compose.yml
+        state: present
+        recreate: yes
