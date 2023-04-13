@@ -16,6 +16,10 @@
       docker_login:
         username: "hsouna2"
         password: "Has+Sah2025@#"
+      become: true
+      become_user: root
+      vars:
+         ansible_python_interpreter: /usr/bin/python3
 
     - name: Download Docker Compose file from GitHub
       get_url:
