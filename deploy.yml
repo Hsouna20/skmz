@@ -1,77 +1,33 @@
 ---
-- name: Configure API server and frontend
+- name: Deploy HSOUNA2 app using Docker Compose
   hosts: webserver
   become: true
   vars:
-    remote_user: hsounaa
-    
+    docker_registry: "hsouna2/skmz-first-try"
+    app_name: "skmz-first-try"
+    app_version: "1.0"
   tasks:
-    - name: Configure passwordless sudo access for remote user
-      lineinfile:
-        dest: /etc/sudoers
-        regexp: '^%sudo'
-        line: 'hsounaa ALL=(ALL) NOPASSWD:ALL'
+    - name: Log in to Docker Hub
+      docker_login:
+        username: "hsouna2"
+        password: "Has+Sah2025@#"
 
-    - name: Install required packages
+    - name: Install Docker
       apt:
-        name:
-          - git
-          - golang
-          - nodejs
-          - npm
+        name: docker.io
         state: present
-
-    - name: Clone API server repository
-      git:
-        repo: https://github.com/Hsouna20/skmz.git
-        dest: /opt/my-api
-        version: main
-
-    - name: Build API server
-      become: true
-      become_user: "hsounaa"
-      shell: |
-        cd /opt/my-api/server
-        go build -o api-server main.go
+    - name: Install Docker Compose
+      command: "curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ ansible_system }}-{{ ansible_machine }} -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose"
+    
+    - name: Download Docker Compose file from GitHub
+      get_url:
+        url: "https://raw.githubusercontent.com/hsouna/skmz/docker-compose.yml"
+        dest: "docker-compose.yml"
+    - name: Pull Docker image from Docker Hub
+      docker_image:
+        name: "{{ docker_registry }}:{{ app_version }}"
+        source: pull
+    - name: Deploy the app using Docker Compose
+      command: "docker-compose up -d"
       args:
-        executable: /bin/bash
-      register: build_result
-      failed_when: build_result.rc != 0
-
-
-    - name: Start API server
-      command: ./my-api
-      args:
-        chdir: /opt/my-api
-      async: 30
-      poll: 5
-      register: api_server_pid
-      changed_when: false
-
-    - name: Clone frontend repository
-      git:
-        repo: https://github.com/Hsouna20/skmz.git
-        dest: /var/www/html
-        version: main
-
-    - name: Install frontend dependencies
-      npm:
-        path: /var/www/html
-        state: present
-
-    - name: Configure Nginx
-      template:
-        src: nginx.conf.j2
-        dest: /etc/nginx/nginx.conf
-      notify:
-        - Reload Nginx
-
-  handlers:
-    - name: Reload Nginx
-      service:
-        name: nginx
-        state: restarted
-
-    - name: Stop API server
-      command: kill {{ api_server_pid.pid }}
-      when: api_server_pid is defined and api_server_pid.returncode is not defined
+        chdir: "{{ playbook_dir }}"
