@@ -23,7 +23,7 @@
 
     - name: Download Docker Compose file from GitHub
       get_url:
-        url: "https://github.com/Hsouna20/skmz/blob/main/docker-compose.yml"
+        url: " https://raw.githubusercontent.com/Hsouna20/skmz/main/docker-compose.yml"
         dest: "/home/hsounaa/docker-compose.yml"
     - name: Pull Docker image from Docker Hub
       docker_image:
