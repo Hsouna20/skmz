@@ -49,4 +49,4 @@
         files:
           - /home/hsouna/skmz/docker-compose.yml
         state: present
-        recreate: yes
+        recreate: always
