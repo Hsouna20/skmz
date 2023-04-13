@@ -31,6 +31,6 @@
         source: pull
     - name: Deploy the app using Docker Compose
       become: true
-      command: "docker compose up "
+      command: " docker-compose up "
       args:
         chdir: "/home/hsounaa/"
