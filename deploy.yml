@@ -38,7 +38,9 @@
       docker_image:
         name: hsouna2/skmz-first-try:1.0
         build:
-          pull: yes
+          path: /home/hsouna/skmz
+          dockerfile: /home/hsouna/skmz/Dockerfile
+        pull: yes
 
 
     # Start application with Docker Compose
