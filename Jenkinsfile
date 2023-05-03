@@ -20,30 +20,12 @@ pipeline {
             steps{
                 script {
                     echo "deploying the application..."
-                    sh' docker --version'
-                    sh' docker-compose --version'
-                    sh' npm --version'
                     sh'docker compose up -d '
                 }
             }
         }
         
           
-        
-       
-         stage('Setup') {
-            steps {
-               sh 'export GO111MODULE=on'
-               
-                /*sh 'go mod init github.com/Hsouna20/skmz/tree/main/server'
-              sh 'go mod tidy'
-                sh 'go get -u github.com/stretchr/testify/assert'
-                sh 'go get github.com/Hsouna20/skmz '
-                sh ' go get github.com/Hsouna20/skmz/server '
-                 sh 'go test */
-                echo "testing the application..."
-    }
-}
           
            stage('Deploy to Web Servers') {
                steps {
