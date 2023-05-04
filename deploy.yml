@@ -2,11 +2,6 @@
 - name: Deploy SKMZ app
   hosts: webserver
   become: yes
-  vars:
-    docker_registry: "hsouna2/skmz-first-try"
-    app_name: "skmz-first-try"
-    app_version: "1.0"
-
   tasks:
     # Clone the GitHub repository
     - name: Clone GitHub repository
