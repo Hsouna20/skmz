@@ -27,7 +27,7 @@ pipeline {
         
           
           
-         /*  stage('Deploy to Web Servers') {
+          stage('Deploy to Web Servers') {
                steps {
                    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credentials', keyFileVariable: 'SSH_KEY', passphraseVariable: '', usernameVariable: 'SSH_USER')]) {
                        sh """
@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-    */
+    
               
     }
 }
