@@ -23,10 +23,7 @@ pipeline {
                     sh'docker compose up -d '
                 }
             }
-        }
-        
-          
-          
+        } 
           stage('Automation with ansible ') {
                steps {
                    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credentials', keyFileVariable: 'SSH_KEY', passphraseVariable: '', usernameVariable: 'SSH_USER')]) {
@@ -35,8 +32,6 @@ pipeline {
                         """
                 }
             }
-        }
-    
-              
+        }       
     }
 }
