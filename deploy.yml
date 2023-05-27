@@ -10,7 +10,6 @@
         dest: /home/hsounaa/skmz
         clone: yes
         force: yes
-
     # Install Docker and Docker Compose
     - name: Install Docker and Docker Compose
       apt:
@@ -18,7 +17,6 @@
           - docker.io
           - docker-compose
         state: present
-    
     - name: Log in to Docker Hub
       docker_login:
         username: "hsouna2"
@@ -27,7 +25,6 @@
       become_user: root
       vars:
          ansible_python_interpreter: /usr/bin/python3
-
     # Pull Docker image
     - name: Pull Docker image
       docker_image:
@@ -36,8 +33,6 @@
           path: /home/hsouna/skmz
           dockerfile: /home/hsouna/skmz/Dockerfile
         pull: yes
-
-
     # Start application with Docker Compose
     - name: Start application with Docker Compose
       docker_compose:
