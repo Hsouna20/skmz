@@ -19,8 +19,8 @@
         state: present
     - name: Log in to Docker Hub
       docker_login:
-        username: "hsouna2"
-        password: "Has+Sah2025@#"
+    username: "{{ lookup('env', 'USERNAME') }}"
+    password: "{{ lookup('env', 'PASSWORD') }}"
       become: true
       become_user: root
       vars:
